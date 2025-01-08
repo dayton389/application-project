@@ -1,0 +1,143 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 17.2
+-- Dumped by pg_dump version 17.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: ap; Type: SCHEMA; Schema: -; Owner: postgres
+--
+
+CREATE SCHEMA ap;
+
+
+ALTER SCHEMA ap OWNER TO postgres;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: applicants; Type: TABLE; Schema: ap; Owner: postgres
+--
+
+CREATE TABLE ap.applicants (
+    applicant_id integer NOT NULL,
+    username text NOT NULL,
+    password text
+);
+
+
+ALTER TABLE ap.applicants OWNER TO postgres;
+
+--
+-- Name: applicants_applicant_id_seq; Type: SEQUENCE; Schema: ap; Owner: postgres
+--
+
+ALTER TABLE ap.applicants ALTER COLUMN applicant_id ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME ap.applicants_applicant_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Name: applications; Type: TABLE; Schema: ap; Owner: postgres
+--
+
+CREATE TABLE ap.applications (
+    app_id integer NOT NULL,
+    applicant_id integer,
+    date_applied date NOT NULL,
+    job_title text NOT NULL,
+    company text NOT NULL,
+    hiring_manager text,
+    hm_li_profile text,
+    current_status text NOT NULL,
+    job_link text NOT NULL,
+    referenced boolean
+);
+
+
+ALTER TABLE ap.applications OWNER TO postgres;
+
+--
+-- Name: applications_app_id_seq; Type: SEQUENCE; Schema: ap; Owner: postgres
+--
+
+ALTER TABLE ap.applications ALTER COLUMN app_id ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME ap.applications_app_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- Data for Name: applicants; Type: TABLE DATA; Schema: ap; Owner: postgres
+--
+
+COPY ap.applicants (applicant_id, username, password) FROM stdin;
+\.
+
+
+--
+-- Data for Name: applications; Type: TABLE DATA; Schema: ap; Owner: postgres
+--
+
+COPY ap.applications (app_id, applicant_id, date_applied, job_title, company, hiring_manager, hm_li_profile, current_status, job_link, referenced) FROM stdin;
+\.
+
+
+--
+-- Name: applicants_applicant_id_seq; Type: SEQUENCE SET; Schema: ap; Owner: postgres
+--
+
+SELECT pg_catalog.setval('ap.applicants_applicant_id_seq', 1, false);
+
+
+--
+-- Name: applications_app_id_seq; Type: SEQUENCE SET; Schema: ap; Owner: postgres
+--
+
+SELECT pg_catalog.setval('ap.applications_app_id_seq', 1, false);
+
+
+--
+-- Name: applicants applicants_pkey; Type: CONSTRAINT; Schema: ap; Owner: postgres
+--
+
+ALTER TABLE ONLY ap.applicants
+    ADD CONSTRAINT applicants_pkey PRIMARY KEY (applicant_id);
+
+
+--
+-- Name: applications applications_applicant_id_fkey; Type: FK CONSTRAINT; Schema: ap; Owner: postgres
+--
+
+ALTER TABLE ONLY ap.applications
+    ADD CONSTRAINT applications_applicant_id_fkey FOREIGN KEY (applicant_id) REFERENCES ap.applicants(applicant_id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
