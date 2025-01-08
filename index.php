@@ -12,9 +12,9 @@ define('DBPASS', '');
 define('DBCONNSTRING',"mysql:host=" . DBHOST . ";dbname=" . DBNAME . ";charset=utf8mb4;");
  */
 $server = "localhost";
-$db = "kilhshuk_ap";
-$username = 'kilhshuk_ap';
-$password = "EKGLUfuDL8SmzechTcB2";
+$db = "ap";
+$username = 'root';
+$password = "";
 $conn = mysqli_connect($server, $username, $password, $db);
 
 if (!$conn) {
@@ -43,7 +43,7 @@ if(isset($_GET['delid'])){
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Chaparral Orchestra Community</title>
+  <title>Application Project</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
