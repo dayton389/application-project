@@ -297,4 +297,8 @@ if(isset($_GET['delid'])){
 
 </body>
 
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> 66852ef (Create index.php)
