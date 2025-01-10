@@ -40,7 +40,7 @@
             <a class="nav-link" href="">Competitions</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled">Profile</a>
+            <a class="nav-link">Profile</a>
           </li>
         </ul>
       </div>
