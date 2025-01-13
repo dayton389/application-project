@@ -32,8 +32,8 @@ define('DBCONNSTRING',"mysql:host=" . DBHOST . ";dbname=" . DBNAME . ";charset=u
 <html lang="en">
 <?php include('heading.php')?>
   <body class="container row">
-    <div class="col blue mx-3 text-center">
-      hello world
+    <div class="col blue mx-4 text-center">
+      competitions
     </div>
   </body>
 </html>
