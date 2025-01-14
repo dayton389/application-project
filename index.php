@@ -30,10 +30,23 @@ define('DBCONNSTRING',"mysql:host=" . DBHOST . ";dbname=" . DBNAME . ";charset=u
 ?>
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Application Competition</title>
+  </head>
 <?php include('heading.php')?>
-  <body class="container row">
-    <div class="col blue mx-3 text-center">
-      hello world
+  <div class="container">
+    <div class="row">
+      <div class="col-7 blue m-4 p-2">
+        <h3>Competitions</h3>
+      </div>
+      <div class="col blue m-4 p-2">
+        <h3>My Applications</h3>
+      </div>
     </div>
-  </body>
+    <div class="row">
+      <div class="col blue m-4 p-2">
+        <h3>Job Boards</h3>
+      </div>
+    </div>
+  </div>
 </html>

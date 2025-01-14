@@ -31,9 +31,36 @@ define('DBCONNSTRING',"mysql:host=" . DBHOST . ";dbname=" . DBNAME . ";charset=u
 <!DOCTYPE html>
 <html lang="en">
 <?php include('heading.php')?>
-  <body class="container row">
-    <div class="col blue mx-4 text-center">
-      competitions
+  <div class="container">
+    <div class="row text-center">
+        <span class="text-light">My Competitions</span>
+        <div class="col blue m-4 p-2 text-center">
+            <h3>*Competition Name*</h3>
+            <div class="row my-2 text-start">
+                <div class="col">
+                    <h4>Calendar</h4>
+                </div>
+                <div class="col">
+                    <div class="row text-center justify-content-center">
+                        <h4>Goal</h4>
+                        <div class="col">
+                            <div class="progress p-0 m-0 w-100 border border-dark" role="progressbar" aria-label="Example with label" aria-valuenow="10" aria-valuemin="0" aria-valuemax="40">
+                                <div class="progress-bar" style="width:25%">10 of 40</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <h4>Incentive</h4>
+                        <p>Red Robin</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-2">
+                <div class="col text-start">
+                    <h4>Participants</h4>
+                </div>
+            </div>
+        </div>
     </div>
-  </body>
+    </div>
 </html>
