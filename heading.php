@@ -28,6 +28,9 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
+            <a class="nav-link" href="login.php">Login</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="applications.php">My Applications</a>
           </li>
           <li class="nav-item">

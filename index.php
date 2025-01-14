@@ -37,6 +37,8 @@ define('DBCONNSTRING',"mysql:host=" . DBHOST . ";dbname=" . DBNAME . ";charset=u
   <div class="container">
     <div class="row">
       <div class="col-7 blue m-4 p-2">
+        <h3>Login</h3>
+      <div class="col-7 blue m-4 p-2">
         <h3>Competitions</h3>
       </div>
       <div class="col blue m-4 p-2">
