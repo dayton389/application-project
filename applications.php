@@ -7,13 +7,17 @@ include('conn_config.php');
 if($_SERVER["REQUEST_METHOD"]== "POST" && isset($_POST["title"])){
     $title = $_POST['title'];
     $company = $_POST['company'];
-    $date = date("m-d-Y");
+    $date = date("Y-m-d");
     $job_desc = $_POST['job_desc'];
     $status = $_POST['app_status'];
     $man_name = $_POST['manager_name'];
     $manager_linkedin = $_POST['manager_linkedin'];
-    $referenced = $_POST['referenced'];
-    mysqli_query($conn, "INSERT INTO `applications`(`app_id`, `applicant_id`, `date_applied`, `job_title`, `company`, `hiring_manager`, `hm_li_profile`, `current_status`, `job_link`, `referenced`) VALUES (NULL,'1','$date','$title','$company','$man_name','$manager_linkedin','$status','$job_desc','[$referenced')")
+    if (isset($_POST['referenced'])) {
+        $referenced = $_POST['referenced'];
+    } else {
+        $referenced = 0;
+    }
+    mysqli_query($conn, "INSERT INTO `applications`(`app_id`, `applicant_id`, `date_applied`, `job_title`, `company`, `hiring_manager`, `hm_li_profile`, `current_status`, `job_link`, `referenced`) VALUES (NULL,'1','$date','$title','$company','$man_name','$manager_linkedin','$status','$job_desc','$referenced')");
   }
 ?>
 <!DOCTYPE html>
@@ -79,7 +83,7 @@ if($_SERVER["REQUEST_METHOD"]== "POST" && isset($_POST["title"])){
                         </div>
                         <div class="col mb-3">
                             <p class="mb-0">Reference Contacted</p>
-                            <input class="rounded-2 p-1" type="checkbox" placeholder="example corp" name="referenced">
+                            <input class="rounded-2 p-1" type="checkbox" placeholder="example corp" name="referenced" value="1">
                         </div>
                         <div class="col-12">
                             <button class="btn blue mb-3" type="submit">Add Application</button>
@@ -95,10 +99,19 @@ if($_SERVER["REQUEST_METHOD"]== "POST" && isset($_POST["title"])){
         <div class="row">
         <div class="col blue mx-4 p-4">
             <h4>Applications in Progress</h4>
-            <div class="list-group ">
-                <div class="list-group-item bg-dark border-dark text-light">
-                </div>
-            </div>
+            <table class="table bg-dark border-dark text-light">
+                <thead>
+                    <tr>
+                    <th>Job Title</th>
+                    <th>Job Description</th>
+                    <th>Data Applied</th>
+                    <th>Hiring Manager Name</th>
+                    <th>Hiring Manager LinkedIn</th>
+                    <th>Referenced</th>
+                    <th>Edit Application</th>
+                    </tr>
+                </thead>
+            </table>
         </div>
         </div>
     </div>
