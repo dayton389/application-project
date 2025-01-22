@@ -1,32 +1,20 @@
 <?php
-// ini_set('display_errors', 1);
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 include('conn_config.php');
-/* 
-define('DBHOST',, 'name here');
-define('DBUSER' 'localhost');
-define('DBNAME', 'root');
-define('DBPASS', '');
-//define('DBCONNSTRING','sqlite:./art.db');
-define('DBCONNSTRING',"mysql:host=" . DBHOST . ";dbname=" . DBNAME . ";charset=utf8mb4;");
- */
 
-
-// function genQuery($qry) {
-//     $result = mysqli_query($conn, $qry);
-//     if (mysqli_num_rows($result) > 0) {
-
-//     }
-// }
-
-/* if(isset($_GET['delid'])){
-  $delid = $_GET['delid'];
-  $sql = mysqli_query($conn, "DELETE FROM articles WHERE id = '$delid'");
-  echo "<script>alert('Data deleted successfully');</script>";
-  echo "<script>window.location.href = 'index.php'</script>";
-} */
-
+if($_SERVER["REQUEST_METHOD"]== "POST" && isset($_POST["title"])){
+    $title = $_POST['title'];
+    $company = $_POST['company'];
+    $date = date("m-d-Y");
+    $job_desc = $_POST['job_desc'];
+    $status = $_POST['app_status'];
+    $man_name = $_POST['manager_name'];
+    $manager_linkedin = $_POST['manager_linkedin'];
+    $referenced = $_POST['referenced'];
+    mysqli_query($conn, "INSERT INTO `applications`(`app_id`, `applicant_id`, `date_applied`, `job_title`, `company`, `hiring_manager`, `hm_li_profile`, `current_status`, `job_link`, `referenced`) VALUES (NULL,'1','$date','$title','$company','$man_name','$manager_linkedin','$status','$job_desc','[$referenced')")
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,15 +44,48 @@ define('DBCONNSTRING',"mysql:host=" . DBHOST . ";dbname=" . DBNAME . ";charset=u
         <div class="col blue mx-4 p-4">
             <h4>Record New Application</h4>
                 <div class="container">
+                    <form action="applications.php" method="POST">
                     <div class="row row-cols-auto bg-dark text-light rounded-1">
-                        <div class="col">Job Title</div>
-                        <div class="col">Company</div>
-                        <div class="col">Job Description</div>
-                        <div class="col">Application Status</div>
-                        <div class="col">Hiring Manager Name</div>
-                        <div class="col">Hiring Manager Linked-in</div>
-                        <div class="col">Contacted Reference?</div>
+                        <div class="col mb-3 rounded-1">
+                            <p class="mb-0">Job Title</p>
+                            <input class="rounded-2 p-1" type="text" placeholder="example title" name="title" required>
+                        </div>
+                        <div class="col mb-3">
+                            <p class="mb-0">Company</p>
+                            <input class="rounded-2 p-1" type="text" placeholder="example corp" name="company" required>
+                        </div>
+                        <div class="col mb-3">
+                            <p class="mb-0">Job Description</p>
+                            <input class="rounded-2 p-1" type="text" placeholder="job.description.com" name="job_desc" required>
+                        </div>
+                        <div class="col mb-3">
+                            <p class="mb-0">Application Status</p>
+                            <select class="form-select" aria-label="Default select example" name="app_status" required>
+                                <option selected>Open this select menu</option>
+                                <option value="APP">Applied</option>
+                                <option value="AIP">Application In Progress</option>
+                                <option value="INT">Interviewing</option>
+                                <option value="CON">Being Considered</option>
+                                <option value="REJ">Rejected</option>
+                            </select>
+                        </div>
+                        <div class="col mb-3">
+                            <p class="mb-0">Hiring Manager Name</p>
+                            <input class="rounded-2 p-1" type="text" placeholder="example corp" name="manager_name">
+                        </div>
+                        <div class="col mb-3">
+                            <p class="mb-0">Hiring Manager LinkedIn</p>
+                            <input class="rounded-2 p-1" type="text" placeholder="example corp" name="manager_linkedin">
+                        </div>
+                        <div class="col mb-3">
+                            <p class="mb-0">Reference Contacted</p>
+                            <input class="rounded-2 p-1" type="checkbox" placeholder="example corp" name="referenced">
+                        </div>
+                        <div class="col-12">
+                            <button class="btn blue mb-3" type="submit">Add Application</button>
+                        </div>
                     </div>
+                    </form>
                 </div>
         </div>
         </div>
