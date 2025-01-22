@@ -4,24 +4,16 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <title>Document</title>
   <style>
-    /* Add background image to the body */
     .custom-bg {
       background-image: url('https://wallpapers.com/images/featured/dark-abstract-bsid6neh0qavpfd1.jpg');
-      /* Replace with your image URL */
       background-size: cover;
-      /* Ensure the image covers the entire screen */
       background-position: center;
-      /* Center the image */
       background-repeat: no-repeat;
-      /* Prevent the image from repeating */
       height: 100vh;
-      /* Make the body take the full viewport height */
     }
-
 
     .blue {
       background-color: #5191b3 !important;
-      /* Your desired color */
     }
   </style>
 </head>
@@ -37,7 +29,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="create_account.php">Login</a>
+            <a class="nav-link" href="login.php">Login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="applications.php">My Applications</a>
@@ -51,7 +43,7 @@
           <?php if (isset($_COOKIE['loggedin'])) { ?>
             <li class="nav-item">
               <form action="signout.php" method="POST">
-                <button type="submit">Log Out</button>
+                <button class="blue rounded-2 mt-1 mx-2" type="submit">Log Out</button>
               </form>
             </li>
           <?php } ?>

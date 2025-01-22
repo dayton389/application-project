@@ -13,7 +13,7 @@ if($_SERVER["REQUEST_METHOD"]== "POST" && isset($_POST["title"])){
     $man_name = $_POST['manager_name'];
     $manager_linkedin = $_POST['manager_linkedin'];
     $referenced = $_POST['referenced'];
-    mysqli_query($conn, "INSERT INTO `applications`(`app_id`, `applicant_id`, `date_applied`, `job_title`, `company`, `hiring_manager`, `hm_li_profile`, `current_status`, `job_link`, `referenced`) VALUES (NULL,'1','$date','$title','$company','$man_name','$manager_linkedin','$status','$job_desc','[$referenced')")
+    mysqli_query($conn, "INSERT INTO `applications`(`app_id`, `applicant_id`, `date_applied`, `job_title`, `company`, `hiring_manager`, `hm_li_profile`, `current_status`, `job_link`, `referenced`) VALUES (NULL,'1','$date','$title','$company','$man_name','$manager_linkedin','$status','$job_desc','$referenced')");
   }
 ?>
 <!DOCTYPE html>
